@@ -1,0 +1,37 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace UnitTestDemo
+{
+    public class StringHelper
+    {
+        public static int GetCountOfWords(string sentence)
+        {
+            if (string.IsNullOrEmpty(sentence))
+            {
+                return -1;
+            }
+
+            var result = sentence.Replace("the", string.Empty);
+            result = result.Trim();
+
+
+            string[] resultArray = result.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+
+            return resultArray.Length;
+        }
+
+        public static int FindInContent(string content, string search)
+        {
+            if (search == null || content == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            return content.IndexOf(search);
+        }
+    }
+}
