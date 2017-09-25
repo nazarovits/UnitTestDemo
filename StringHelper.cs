@@ -30,13 +30,7 @@ namespace UnitTestDemo
                 return -1;
             }
 
-            var result = sentence.Replace("the", string.Empty);
-            result = result.Trim();
-
-
-            string[] resultArray = result.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-
-            return resultArray.Length;
+            return GetWords(sentence).Length;
         }
 
         public static int FindInContent(string content, string search)
