@@ -8,6 +8,21 @@ namespace UnitTestDemo
 {
     public class StringHelper
     {
+        public static string[] GetWords(string sentence)
+        {
+            if (string.IsNullOrEmpty(sentence))
+            {
+                return new string[0];
+            }
+
+            var result = sentence.Replace("the", string.Empty);
+            result = result.Trim();
+
+            string[] resultArray = result.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+
+            return resultArray;
+        }
+
         public static int GetCountOfWords(string sentence)
         {
             if (string.IsNullOrEmpty(sentence))

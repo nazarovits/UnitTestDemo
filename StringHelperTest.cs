@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
@@ -38,6 +39,19 @@ namespace UnitTestDemo
             
             Assert.AreEqual(expectedValue, actualValue, 
                 $"FindInContent(\"{contentValue}\", \"{searchValue}\") should be return \"{expectedValue}\"");
+        }
+
+        [TestCase(null, new string[0])]
+        [TestCase("", new string[0])]
+        [TestCase("   ", new string[0])] // remove spaces
+        [TestCase("hello", new string[1] {"hello"})]
+        [TestCase("hello world", new string[2] {"hello", "world"})]
+        [TestCase("  hello  ", new string[1] {"hello"})] // remove spaces
+        [TestCase("the TDD style is cool :)", new string[5] {"TDD", "style", "is", "cool", ":)"})]
+        public void GetWordsTest(string inputValue, string[] expectedValue)
+        {
+            string[] actualValue = StringHelper.GetWords(inputValue);
+            Assert.AreEqual(expectedValue, actualValue);
         }
 
         [TestCase(null, "any string")]
