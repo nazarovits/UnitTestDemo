@@ -4,4 +4,4 @@
 
 /bin/*
 UnitTestDemo.csproj.user
-
+/bin/Demo/UnitTestDemo.*
